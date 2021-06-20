@@ -1,0 +1,22 @@
+1) docker-compose up -d
+2) コンテナが完成したら、
+   docker exec -it local_php bash
+   pwd -> /www/laravel -> cd .. -> /www (既にlaravelフォルダが存在している)
+3) composer create-project --prefer-dist laravel/laravel laravel（laravelフォルダを上書き）
+　　※laravelの名前を変更する場合は、nginx -> default.conf(root /www/laravel/public)も書き換える
+
+4).envファイル作成
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=localDB
+DB_USERNAME=root
+DB_PASSWORD=root
+
+5) コンテナ内 cd /laravel
+   php artisan migrate
+
+6) localhostでlaravelが表示されるか確認する
+　　laravel8の場合、
+　　defaultで、app\Providers\RouteServiceProvider.phpの
+   「//protected $namespace = 'App\\Http\\Controllers'」がコメントアウトされているので外す
