@@ -6,6 +6,6 @@ class StoreAbcController extends BaseController
 {
     public function index(): void
     {
-        echo "hahahaっっっっっっっh";
+        echo "hahaha";
     }
 }
